@@ -1,0 +1,50 @@
+# Model settings
+model:
+  wav2vec2_model: "facebook/wav2vec2-base"
+  hidden_size: 768
+  num_transformer_layers: 4
+  num_attention_heads: 8
+  intermediate_size: 3072
+  dropout: 0.1
+  num_pronunciation_classes: 2  # correct/incorrect
+
+# Training settings
+training:
+  batch_size: 16
+  num_epochs: 50
+  learning_rate: 0.00001
+  warmup_steps: 500
+  gradient_accumulation_steps: 4
+  max_grad_norm: 1.0
+  save_steps: 1000
+  eval_steps: 500
+  logging_steps: 100
+  output_dir: "./output"
+  checkpoint_dir: "./checkpoints"
+  
+# Data settings
+data:
+  sample_rate: 16000
+  max_audio_length: 10  # seconds
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  
+# Speech reconstruction settings
+reconstruction:
+  mel_bins: 80
+  target_length: 1024
+  reconstruction_weight: 0.3
+  detection_weight: 0.7
+  
+# Optimization
+optimizer:
+  type: "AdamW"
+  betas: [0.9, 0.999]
+  eps: 1e-8
+  weight_decay: 0.01
+  
+# Scheduler
+scheduler:
+  type: "linear"
+  warmup_ratio: 0.1
