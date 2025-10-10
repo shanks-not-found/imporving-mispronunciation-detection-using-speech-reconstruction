@@ -47,8 +47,8 @@ checkpoints/
 runs/
 *.log
 
-# Data
-data/
+# Data (exclude data directory but not source code)
+/data/
 *.wav
 *.mp3
 *.flac
